@@ -1,0 +1,13 @@
+Enlaces de las plataformas de desarrollo:
+Descripción de la solución del proyecto que se basa en la implementación de un sistema de gestión de inventario para el kiosco:
+- Patrón de arquitectura implementado en el proyecto: Modelo – Vista – Controlador.
+- IDE: En nuestro caso usamos Apache NetBeans IDE 14 porque a través de la investigación realizada, decidimos realizar el proyecto con este IDE porque permite crear y diseñar interfaces de manera accesible e intuitiva para todos. Además, ya contábamos con experiencia de utilizar este IDE así que decidimos optar por este. 
+Enlace de descarga: https://netbeans.apache.org/front/main/download/nb14/
+- Lenguaje de programación: Java la versión 8. 
+Enlace de descarga: https://www.java.com/es/download/
+ - Servidor de gestión de bases de datos: XAMPP. 
+Enlace de descarga: https://www.apachefriends.org/es/index.html
+- Gestor de base de datos: MySQL. La base de datos se va a manejar con el servidor XAMPP.
+- Software para implementar el reporte en PDF: iReport - 5.6.0.
+Enlace de descarga: https://ireport.software.informer.com/download/
+- Las librerías implementadas están en la carpeta lib con su respectiva descripción.
