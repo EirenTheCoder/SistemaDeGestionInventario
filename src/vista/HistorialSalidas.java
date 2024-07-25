@@ -9,7 +9,7 @@ import controlador.DaoSalida;
 import java.io.File;
 import java.sql.Connection;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,11 +27,8 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author Rafael
  */
 public class HistorialSalidas extends javax.swing.JPanel {
-    
     DefaultTableModel modeloHistSal=new DefaultTableModel();
     DaoSalida daoS=new DaoSalida();
-    Salida sld=new Salida();
-
     /**
      * Creates new form HistorialSalidas
      */
@@ -60,7 +57,7 @@ public class HistorialSalidas extends javax.swing.JPanel {
     private void listarHistSalidasFechas(String fecha1, String fecha2){
         List<Salida> lista=daoS.ListarFechas(fecha1, fecha2);
         modeloHistSal=(DefaultTableModel) tblHistSalds.getModel();
-        Object[] ob=new Object[8];
+        Object[] ob=new Object[7];
         for(int i=0;i<lista.size();i++){
             ob[0]=lista.get(i).getIdSalida();
             ob[1]=lista.get(i).getNumSalida();
@@ -91,8 +88,8 @@ public class HistorialSalidas extends javax.swing.JPanel {
         txtNroSld = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        fechaInicio = new com.toedter.calendar.JDateChooser();
-        fechaFin = new com.toedter.calendar.JDateChooser();
+        fechainicio = new com.toedter.calendar.JDateChooser();
+        fechafin = new com.toedter.calendar.JDateChooser();
         btnPDF = new RSMaterialComponent.RSButtonMaterialIconDos();
         btnBuscar = new RSMaterialComponent.RSButtonMaterialIconDos();
         jpanelRound2 = new modelo.JpanelRound();
@@ -174,11 +171,11 @@ public class HistorialSalidas extends javax.swing.JPanel {
                 .addGap(72, 72, 72)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fechainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fechafin, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(64, Short.MAX_VALUE))
             .addGroup(jpanelRound1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -193,8 +190,8 @@ public class HistorialSalidas extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(jpanelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechafin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechainicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpanelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(txtNroSld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -310,8 +307,8 @@ public class HistorialSalidas extends javax.swing.JPanel {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         limpiarTablaHistorial();
-        String fecha1=registroFechas(fechaInicio)+"";
-        String fecha2=registroFechas(fechaFin)+"";
+        String fecha1=registroFechas(fechainicio)+"";
+        String fecha2=registroFechas(fechafin)+"";
         listarHistSalidasFechas(fecha1,fecha2);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -334,10 +331,10 @@ public class HistorialSalidas extends javax.swing.JPanel {
         }
     }
     
-    public Date registroFechas(JDateChooser jdc){
+    public Date registroFechas(JDateChooser dch){
         Calendar cal;
         int d,m,a;
-        cal=jdc.getCalendar();
+        cal=dch.getCalendar();
         d=cal.get(Calendar.DAY_OF_MONTH);
         m=cal.get(Calendar.MONTH);
         a=cal.get(Calendar.YEAR)-1900;
@@ -355,8 +352,8 @@ public class HistorialSalidas extends javax.swing.JPanel {
     private RSMaterialComponent.RSButtonMaterialIconDos Icono;
     private RSMaterialComponent.RSButtonMaterialIconDos btnBuscar;
     private RSMaterialComponent.RSButtonMaterialIconDos btnPDF;
-    private com.toedter.calendar.JDateChooser fechaFin;
-    private com.toedter.calendar.JDateChooser fechaInicio;
+    private com.toedter.calendar.JDateChooser fechafin;
+    private com.toedter.calendar.JDateChooser fechainicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
